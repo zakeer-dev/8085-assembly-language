@@ -1,0 +1,20 @@
+; ========================================================
+; Title: 8085 Microprocessor - 8-bit Addition Routine
+; Author: Mohammed Zakeer
+; Description: Loads two hexadecimal data values from memory,
+;              adds them using accumulator register A, and 
+;              stores the result in memory location 2050H.
+; ========================================================
+
+        ORG 2000H       ; Set program origin address
+        
+START:  LXI H, 2040H    ; Load HL register pair with memory address 2040H
+        MOV A, M        ; Move data from memory [2040H] into Accumulator (A)
+        
+        INX H           ; Increment HL to point to next memory location (2041H)
+        ADD M           ; Add content of memory [2041H] to Accumulator (A + M -> A)
+        
+        INX H           ; Increment HL to point to result storage address (2050H)
+        MOV M, A        ; Store the final sum from Accumulator into memory [2050H]
+        
+        HLT             ; Halt program execution
